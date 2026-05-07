@@ -112,9 +112,9 @@ export default function AuditEngine() {
     let step = 0;
     progressRef.current = setInterval(() => {
       step++;
-      setProgress(Math.min(step * 11, 88));
+      setProgress(Math.min(step * 12, 90));
       setProgressLabel(progressSteps[Math.min(step - 1, progressSteps.length - 1)]);
-    }, 4500);
+    }, 900);
 
     try {
       const { runAuditAPI } = await import("../components/auditApi");
@@ -290,14 +290,18 @@ export default function AuditEngine() {
           <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}>
             <select value={currency.code}
               onChange={e => { const c = CURRENCIES.find(x => x.code === e.target.value); if(c) setCurrency(c); }}
-              style={{background:"#FFFFFF",border:"1px solid #CBD5E1",borderRadius:6,color:"#5F5E5A",padding:"5px 10px",fontFamily:"inherit",fontSize:12,cursor:"pointer",outline:"none"}}>
+              style={{background:"#F8FAFB",border:"1px solid #CBD5E1",borderRadius:8,color:"#1A2236",padding:"7px 12px",fontFamily:"inherit",fontSize:12,cursor:"pointer",outline:"none",fontWeight:500}}>
               {CURRENCIES.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
             </select>
-            <button className="gsbtn" onClick={shareReport}>&#128279; Share</button>
-            <button className="gsbtn" onClick={exportReport} disabled={exportLoading}>
-              {exportLoading ? "Generating..." : "&#8681; Export PDF"}
+            <button onClick={shareReport} style={{background:"#F0FAF8",border:"1.5px solid #0D7377",borderRadius:8,color:"#0D7377",padding:"7px 14px",fontFamily:"inherit",fontSize:12,cursor:"pointer",fontWeight:600,display:"flex",alignItems:"center",gap:5,transition:"all 0.2s"}}>
+              🔗 Share
             </button>
-            <button className="gsbtn" onClick={clearReport}>&#8592; New Audit</button>
+            <button onClick={exportReport} disabled={exportLoading} style={{background:exportLoading?"#F1EFE8":"#0D7377",border:"1.5px solid #0D7377",borderRadius:8,color:exportLoading?"#888780":"#FFFFFF",padding:"7px 14px",fontFamily:"inherit",fontSize:12,cursor:exportLoading?"not-allowed":"pointer",fontWeight:600,transition:"all 0.2s",opacity:exportLoading?0.7:1}}>
+              {exportLoading ? "Generating..." : "↓ Export PDF"}
+            </button>
+            <button onClick={clearReport} style={{background:"#FFFFFF",border:"1.5px solid #CBD5E1",borderRadius:8,color:"#5F5E5A",padding:"7px 14px",fontFamily:"inherit",fontSize:12,cursor:"pointer",fontWeight:600,transition:"all 0.2s"}}>
+              ← New Audit
+            </button>
           </div>
         )}
       </div>
@@ -409,15 +413,7 @@ export default function AuditEngine() {
             <div style={{fontSize:13,color:"#888780",marginBottom:24,fontWeight:400}}>
               This takes 20–60 seconds. Claude is researching your company in real time.
             </div>
-            {progress >= 88 && (
-              <div style={{textAlign:"center",padding:"20px 0 8px"}}>
-                <div style={{width:28,height:28,border:"3px solid #E2E8F0",borderTop:"3px solid #0D7377",borderRadius:"50%",animation:"spin 0.9s linear infinite",margin:"0 auto 12px"}}/>
-                <div style={{fontSize:13,fontWeight:600,color:"#1A2236",marginBottom:4}}>Claude is compiling your report...</div>
-                <div style={{fontSize:11,color:"#888780"}}>This can take up to 30 more seconds. Please don't close this tab.</div>
-              </div>
-            )}
-            {progress < 88 && (
-            <>{[
+            {[
               {label:"Scanning digital footprint",detail:"Reading website, social profiles..."},
               {label:"Diagnosing business model",detail:"Identifying revenue streams & segments..."},
               {label:"Identifying pain points",detail:"Mapping operational inefficiencies..."},
@@ -444,8 +440,7 @@ export default function AuditEngine() {
                   </div>
                 </div>
               );
-            })}</>
-            )}
+            })}
           </div>
         </div>
       )}
@@ -937,22 +932,28 @@ export default function AuditEngine() {
           {/* STICKY EXPORT BAR */}
           <div style={{
             position:"fixed",bottom:0,left:0,right:0,zIndex:200,
-            background:"rgba(255,255,255,0.97)",backdropFilter:"blur(12px)",
-            borderTop:"0.5px solid #E2E8F0",padding:"12px 24px",
-            display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",
-            boxShadow:"0 -4px 24px rgba(0,0,0,0.06)"
+            background:"rgba(248,250,251,0.98)",backdropFilter:"blur(16px)",
+            borderTop:"1px solid #E2E8F0",padding:"10px 24px",
+            display:"flex",gap:8,justifyContent:"center",alignItems:"center",flexWrap:"wrap",
+            boxShadow:"0 -4px 32px rgba(0,0,0,0.08)"
           }}>
-            <button className="gsbtn" onClick={shareReport}>&#128279; Share report</button>
-            <button className="gsbtn" onClick={exportReport} disabled={exportLoading}>
-              {exportLoading ? "Generating..." : "&#8681; Export PDF"}
+            <button onClick={shareReport} style={{background:"#F0FAF8",border:"1.5px solid #0D7377",borderRadius:8,color:"#0D7377",padding:"8px 16px",fontFamily:"inherit",fontSize:12,cursor:"pointer",fontWeight:600,display:"flex",alignItems:"center",gap:6,transition:"all 0.2s"}}>
+              🔗 Share report
             </button>
-            <button className="gsbtn" onClick={() => {
+            <button onClick={exportReport} disabled={exportLoading} style={{background:exportLoading?"#F1EFE8":"#0D7377",border:"1.5px solid #0D7377",borderRadius:8,color:exportLoading?"#888780":"#FFFFFF",padding:"8px 16px",fontFamily:"inherit",fontSize:12,cursor:exportLoading?"not-allowed":"pointer",fontWeight:600,transition:"all 0.2s",opacity:exportLoading?0.7:1}}>
+              {exportLoading ? "Generating..." : "↓ Export PDF"}
+            </button>
+            <button onClick={() => {
               const a = document.createElement("a");
               a.href = "data:application/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(report,null,2));
               a.download = (report.company_name||"audit")+"-report.json";
               a.click();
-            }}>&#123;&#125; Export JSON</button>
-            <button className="gsbtn" onClick={clearReport}>&#8592; New Audit</button>
+            }} style={{background:"#FFFFFF",border:"1.5px solid #CBD5E1",borderRadius:8,color:"#5F5E5A",padding:"8px 16px",fontFamily:"inherit",fontSize:12,cursor:"pointer",fontWeight:600,transition:"all 0.2s"}}>
+              {"{ }"} Export JSON
+            </button>
+            <button onClick={clearReport} style={{background:"#FFFFFF",border:"1.5px solid #CBD5E1",borderRadius:8,color:"#5F5E5A",padding:"8px 16px",fontFamily:"inherit",fontSize:12,cursor:"pointer",fontWeight:600,transition:"all 0.2s"}}>
+              ← New Audit
+            </button>
           </div>
 
         </div>
