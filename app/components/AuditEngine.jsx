@@ -112,9 +112,9 @@ export default function AuditEngine() {
     let step = 0;
     progressRef.current = setInterval(() => {
       step++;
-      setProgress(Math.min(step * 12, 90));
+      setProgress(Math.min(step * 11, 88));
       setProgressLabel(progressSteps[Math.min(step - 1, progressSteps.length - 1)]);
-    }, 900);
+    }, 4500);
 
     try {
       const { runAuditAPI } = await import("../components/auditApi");
@@ -409,7 +409,15 @@ export default function AuditEngine() {
             <div style={{fontSize:13,color:"#888780",marginBottom:24,fontWeight:400}}>
               This takes 20–60 seconds. Claude is researching your company in real time.
             </div>
-            {[
+            {progress >= 88 && (
+              <div style={{textAlign:"center",padding:"20px 0 8px"}}>
+                <div style={{width:28,height:28,border:"3px solid #E2E8F0",borderTop:"3px solid #0D7377",borderRadius:"50%",animation:"spin 0.9s linear infinite",margin:"0 auto 12px"}}/>
+                <div style={{fontSize:13,fontWeight:600,color:"#1A2236",marginBottom:4}}>Claude is compiling your report...</div>
+                <div style={{fontSize:11,color:"#888780"}}>This can take up to 30 more seconds. Please don't close this tab.</div>
+              </div>
+            )}
+            {progress < 88 && (
+            <>{[
               {label:"Scanning digital footprint",detail:"Reading website, social profiles..."},
               {label:"Diagnosing business model",detail:"Identifying revenue streams & segments..."},
               {label:"Identifying pain points",detail:"Mapping operational inefficiencies..."},
@@ -436,7 +444,8 @@ export default function AuditEngine() {
                   </div>
                 </div>
               );
-            })}
+            })}</>
+            )}
           </div>
         </div>
       )}
