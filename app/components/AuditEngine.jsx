@@ -243,11 +243,11 @@ export default function AuditEngine() {
         .gsbtn{background:transparent;border:1px solid rgba(0,255,209,0.3);border-radius:6px;color:#00FFD1;padding:6px 14px;font-family:inherit;font-size:11px;cursor:pointer;letter-spacing:1px;transition:all 0.2s}
         .gsbtn:hover{background:rgba(0,255,209,0.08)}
         .gsbtn:disabled{opacity:0.5;cursor:not-allowed}
-        .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px}
-        .cteal{border-color:rgba(0,255,209,0.2)!important;background:rgba(0,255,209,0.04)!important}
-        .camber{border-color:rgba(251,191,36,0.25)!important;background:rgba(251,191,36,0.04)!important}
-        .slabel{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#00FFD1;font-weight:600;margin-bottom:8px}
-        .bnum{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:#00FFD1;line-height:1}
+        .card{background:#FFFFFF;border:0.5px solid #E2E8F0;border-radius:12px;padding:20px}
+        .cteal{border-color:#9FE1CB!important;background:#F8FAFB!important}
+        .camber{border-color:#FAC775!important;background:#FAEEDA!important}
+        .slabel{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#0D7377;font-weight:600;margin-bottom:8px}
+        .bnum{font-size:32px;font-weight:700;color:#0D7377;line-height:1}
         .scard{border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px;background:rgba(255,255,255,0.025)}
         .est-badge{font-size:9px;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);color:#fbbf24;padding:2px 6px;border-radius:4px;letter-spacing:1px;vertical-align:middle;margin-left:6px;font-weight:600;font-family:'IBM Plex Mono',monospace}
         @keyframes spin{to{transform:rotate(360deg)}}
