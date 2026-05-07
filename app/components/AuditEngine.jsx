@@ -264,7 +264,7 @@ export default function AuditEngine() {
       {shareToast && <div className="toast">✓ SHAREABLE LINK COPIED TO CLIPBOARD</div>}
 
       {/* STICKY HEADER */}
-      <div style={{borderBottom:"1px solid rgba(0,255,209,0.12)",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,background:"rgba(8,12,20,0.97)",backdropFilter:"blur(12px)",zIndex:100,gap:12}}>
+      <div style={{borderBottom:"1px solid rgba(0,255,209,0.12)",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,background:"rgba(248,250,251,0.97)",backdropFilter:"blur(12px)",zIndex:100,gap:12}}>
         <div style={{display:"flex",alignItems:"center",gap:12,flexShrink:0}}>
           <div style={{width:32,height:32,background:"linear-gradient(135deg,#00FFD1,#7B61FF)",borderRadius:6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16}}>⚡</div>
           <div>
