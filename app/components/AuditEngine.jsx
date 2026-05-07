@@ -954,6 +954,27 @@ export default function AuditEngine() {
             </div>
           )}
 
+        {/* ─── STICKY EXPORT BAR ─── */}
+          <div style={{
+            position:"fixed",bottom:0,left:0,right:0,zIndex:200,
+            background:"rgba(255,255,255,0.97)",backdropFilter:"blur(12px)",
+            borderTop:"0.5px solid #E2E8F0",padding:"12px 24px",
+            display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",
+            boxShadow:"0 -4px 24px rgba(0,0,0,0.06)"
+          }}>
+            <button className="gsbtn" onClick={shareReport}>&#128279; Share report</button>
+            <button className="gsbtn" onClick={exportReport} disabled={exportLoading}>
+              {exportLoading ? "⏳ Generating..." : "⬇ Export PDF"}
+            </button>
+            <button className="gsbtn" onClick={() => {
+              const a = document.createElement("a");
+              a.href = "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(report, null, 2));
+              a.download = (report.company_name||"audit") + "-report.json";
+              a.click();
+            }}>&#123;&#125; Export JSON</button>
+            <button className="gsbtn" onClick={clearReport}>&#8592; New Audit</button>
+          </div>
+
         </div>
       )}
     </div>
