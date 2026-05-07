@@ -224,7 +224,7 @@ export default function AuditEngine() {
   };
 
   return (
-    <div style={{fontFamily:"'IBM Plex Mono','Courier New',monospace",background:"#080C14",minHeight:"100vh",color:"#E8EDF5"}}>
+    <div style={{fontFamily:"'IBM Plex Mono','Courier New',monospace",background:"#F8FAFB",minHeight:"100vh",color:"#1A2236"}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap');
         *{box-sizing:border-box}
