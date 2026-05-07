@@ -235,11 +235,11 @@ export default function AuditEngine() {
         .ifield{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#1A2236;font-family:inherit;font-size:13px;width:100%;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
         .ifield:focus{border-color:#0D7377;box-shadow:0 0 0 3px rgba(13,115,119,0.12)}
         .ifield::placeholder{color:#B4B2A9}
-        .gbtn{background:linear-gradient(135deg,#00FFD1,#00B4D8);color:#080C14;font-weight:700;border:none;border-radius:6px;padding:14px 32px;font-family:inherit;font-size:14px;cursor:pointer;letter-spacing:1px;transition:all 0.3s;text-transform:uppercase}
-        .gbtn:hover{box-shadow:0 0 30px rgba(0,255,209,0.4);transform:translateY(-1px)}
+        .gbtn{background:#0D7377;color:#FFFFFF;font-weight:600;border:none;border-radius:8px;padding:14px 32px;font-family:inherit;font-size:14px;cursor:pointer;letter-spacing:0.01em;transition:all 0.2s}
+        .gbtn:hover{background:#085041;transform:translateY(-1px);box-shadow:0 4px 16px rgba(13,115,119,0.25)}
         .gbtn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-        .dbtn{background:transparent;border:1px solid rgba(232,237,245,0.2);border-radius:6px;color:rgba(232,237,245,0.6);padding:14px 24px;font-family:inherit;font-size:13px;cursor:pointer;letter-spacing:1px;transition:all 0.2s}
-        .dbtn:hover{border-color:rgba(0,255,209,0.4);color:#00FFD1;background:rgba(0,255,209,0.04)}
+        .dbtn{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;color:#5F5E5A;padding:14px 24px;font-family:inherit;font-size:13px;cursor:pointer;transition:all 0.2s;font-weight:500}
+        .dbtn:hover{border-color:#0D7377;color:#0D7377;background:#EAF3DE}
         .gsbtn{background:transparent;border:1px solid rgba(0,255,209,0.3);border-radius:6px;color:#00FFD1;padding:6px 14px;font-family:inherit;font-size:11px;cursor:pointer;letter-spacing:1px;transition:all 0.2s}
         .gsbtn:hover{background:rgba(0,255,209,0.08)}
         .gsbtn:disabled{opacity:0.5;cursor:not-allowed}
