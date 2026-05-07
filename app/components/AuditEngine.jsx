@@ -458,19 +458,26 @@ export default function AuditEngine() {
               <div style={{fontFamily:"'Syne',sans-serif",fontSize:28,fontWeight:800}}>{report.company_name}</div>
               <div style={{fontSize:13,color:"rgba(232,237,245,0.5)",marginTop:2}}>{report.industry}</div>
             </div>
-            <div style={{display:"flex",gap:28,flexWrap:"wrap"}}>
-              {[
-                ["Annual Savings", formatCurrency(report.executive_summary && report.executive_summary.total_annual_savings)],
-                ["12-Mo ROI", (report.executive_summary && report.executive_summary.roi_12_month) + "%"]
-              ].map(([l,v]) => (
-                <div key={l} style={{textAlign:"center"}}>
-                  <div style={{fontSize:10,color:"rgba(232,237,245,0.4)",letterSpacing:1,marginBottom:2}}>{l}</div>
-                  <div style={{fontFamily:"'Syne',sans-serif",fontSize:28,fontWeight:800,color:"#00FFD1",lineHeight:1}}>
-                    {v}
-                    <span className="est-badge">est.</span>
-                  </div>
+            <div style={{display:"flex",flexDirection:"column",gap:8,minWidth:280}}>
+              <div style={{background:"#0D7377",borderRadius:10,padding:"14px 20px",textAlign:"center"}}>
+                <div style={{fontSize:10,color:"rgba(255,255,255,0.7)",letterSpacing:"0.06em",textTransform:"uppercase",marginBottom:2}}>12-Month ROI</div>
+                <div style={{fontSize:32,fontWeight:700,color:"#FFFFFF",lineHeight:1}}>
+                  {report.executive_summary && report.executive_summary.roi_12_month}%
+                  <span className="est-badge">est.</span>
                 </div>
-              ))}
+                <div style={{fontSize:11,color:"rgba(255,255,255,0.6)",marginTop:2}}>estimated return on AI investment</div>
+              </div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+                {[
+                  ["Annual Savings", formatCurrency(report.executive_summary && report.executive_summary.total_annual_savings)],
+                  ["Hours Saved/Mo", (report.executive_summary && report.executive_summary.hours_saved_monthly) ? report.executive_summary.hours_saved_monthly+" hrs" : "—"]
+                ].map(([l,v]) => (
+                  <div key={l} style={{background:"#EAF3DE",borderRadius:8,padding:"10px 12px",textAlign:"center"}}>
+                    <div style={{fontSize:10,color:"#3B6D11",marginBottom:2}}>{l}</div>
+                    <div style={{fontSize:18,fontWeight:700,color:"#085041"}}>{v}<span className="est-badge">est.</span></div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
