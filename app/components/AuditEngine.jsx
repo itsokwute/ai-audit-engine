@@ -232,9 +232,9 @@ export default function AuditEngine() {
         .tab-btn{transition:all 0.2s;border-bottom:2px solid transparent;white-space:nowrap}
         .tab-btn:hover{background:rgba(0,255,209,0.08)!important}
         .tab-btn.active{border-bottom:2px solid #00FFD1!important;color:#00FFD1!important}
-        .ifield{background:rgba(0,255,209,0.04);border:1px solid rgba(0,255,209,0.15);border-radius:6px;padding:10px 14px;color:#E8EDF5;font-family:inherit;font-size:13px;width:100%;outline:none;transition:border-color 0.2s}
-        .ifield:focus{border-color:rgba(0,255,209,0.5)}
-        .ifield::placeholder{color:rgba(232,237,245,0.3)}
+        .ifield{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#1A2236;font-family:inherit;font-size:13px;width:100%;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+        .ifield:focus{border-color:#0D7377;box-shadow:0 0 0 3px rgba(13,115,119,0.12)}
+        .ifield::placeholder{color:#B4B2A9}
         .gbtn{background:linear-gradient(135deg,#00FFD1,#00B4D8);color:#080C14;font-weight:700;border:none;border-radius:6px;padding:14px 32px;font-family:inherit;font-size:14px;cursor:pointer;letter-spacing:1px;transition:all 0.3s;text-transform:uppercase}
         .gbtn:hover{box-shadow:0 0 30px rgba(0,255,209,0.4);transform:translateY(-1px)}
         .gbtn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
