@@ -291,16 +291,25 @@ export default function AuditEngine() {
       {/* ─── INPUT STAGE ─── */}
       {stage==="input" && (
         <div style={{maxWidth:720,margin:"0 auto",padding:"60px 24px"}}>
-          <div style={{textAlign:"center",marginBottom:48}}>
-            <div style={{fontSize:11,letterSpacing:3,color:"#00FFD1",marginBottom:16,textTransform:"uppercase"}}>Executive-Grade Intelligence</div>
-            <div style={{fontFamily:"'Syne',sans-serif",fontSize:42,fontWeight:800,lineHeight:1.1,marginBottom:16}}>
-              AI Automation<br/><span style={{color:"#00FFD1"}}>Audit Engine</span>
+          <div style={{textAlign:"center",marginBottom:40}}>
+            <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"#EAF3DE",border:"1px solid #C0DD97",borderRadius:99,padding:"4px 14px",marginBottom:20}}>
+              <span style={{width:6,height:6,borderRadius:"50%",background:"#639922",display:"inline-block"}}></span>
+              <span style={{fontSize:12,color:"#3B6D11",fontWeight:500}}>Free to try · No signup required</span>
             </div>
-            <div style={{color:"rgba(232,237,245,0.5)",fontSize:14,lineHeight:1.7,maxWidth:500,margin:"0 auto"}}>
-              Submit any company's digital presence. Receive a $10,000-level AI automation audit with ROI modeling, agent prescriptions, and a 90-day deployment roadmap.
+            <div style={{fontSize:38,fontWeight:700,lineHeight:1.15,margin:"0 0 12px",letterSpacing:"-0.02em",color:"#1A2236"}}>
+              Get a $10,000 AI audit<br/>
+              <span style={{color:"#0D7377"}}>in under 60 seconds</span>
             </div>
-            <div style={{marginTop:10,fontSize:11,color:"rgba(232,237,245,0.3)",letterSpacing:0.5}}>
-              More inputs = higher accuracy · Website URL is most important
+            <div style={{color:"#5F5E5A",fontSize:15,lineHeight:1.7,maxWidth:460,margin:"0 auto 12px"}}>
+              Submit any company's digital presence. Receive ROI modeling, agent prescriptions, and a 90-day deployment roadmap.
+            </div>
+            <div style={{display:"flex",justifyContent:"center",gap:24,flexWrap:"wrap",marginTop:16}}>
+              {[["285%","avg ROI reported"],["<60s","to generate"],["$10K+","consulting value"]].map(([v,l]) => (
+                <div key={l} style={{textAlign:"center"}}>
+                  <div style={{fontSize:18,fontWeight:700,color:"#0D7377"}}>{v}</div>
+                  <div style={{fontSize:11,color:"#888780",marginTop:1}}>{l}</div>
+                </div>
+              ))}
             </div>
           </div>
 
