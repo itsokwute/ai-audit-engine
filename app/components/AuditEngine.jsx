@@ -387,17 +387,43 @@ export default function AuditEngine() {
 
       {/* ─── ANALYZING STAGE ─── */}
       {stage==="analyzing" && (
-        <div style={{maxWidth:600,margin:"0 auto",padding:"120px 24px",textAlign:"center"}}>
-          <div style={{width:80,height:80,border:"2px solid rgba(0,255,209,0.15)",borderTop:"2px solid #00FFD1",borderRadius:"50%",animation:"spin 1s linear infinite",margin:"0 auto 40px"}}/>
-          <div style={{fontFamily:"'Syne',sans-serif",fontSize:28,fontWeight:800,marginBottom:12}}>Analyzing Company</div>
-          <div style={{color:"#00FFD1",fontSize:13,marginBottom:32}}>
-            <span className="pdot" style={{marginRight:8}}/>
-            {progressLabel}
+        <div style={{maxWidth:560,margin:"0 auto",padding:"80px 24px"}}>
+          <div className="card" style={{boxShadow:"0 2px 12px rgba(0,0,0,0.06)"}}>
+            <div style={{fontSize:16,fontWeight:600,color:"#1A2236",marginBottom:4}}>
+              Analyzing {inputs.website || "company"}...
+            </div>
+            <div style={{fontSize:12,color:"#888780",marginBottom:24}}>
+              This takes 20–60 seconds. Claude is researching your company in real time.
+            </div>
+            {[
+              {label:"Scanning digital footprint",detail:"Reading website, social profiles..."},
+              {label:"Diagnosing business model",detail:"Identifying revenue streams & segments..."},
+              {label:"Identifying pain points",detail:"Mapping operational inefficiencies..."},
+              {label:"Prescribing AI agents",detail:"Matching agents to each pain point..."},
+              {label:"Modeling ROI scenarios",detail:"Running conservative, moderate, aggressive..."},
+              {label:"Building 90-day roadmap",detail:"Phasing the deployment plan..."},
+              {label:"Generating visual data",detail:"Structuring charts & heatmap..."},
+              {label:"Compiling executive report",detail:"Finalising your audit..."}
+            ].map((step,i) => {
+              const done = i < progress/12;
+              const active = Math.floor(progress/12) === i;
+              return (
+                <div key={i} style={{marginBottom:12}}>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}>
+                    <span style={{fontSize:13,fontWeight:done||active?500:400,color:done?"#27500A":active?"#185FA5":"#B4B2A9"}}>
+                      {done?"✓ ":active?"⟳ ":""}{step.label}
+                    </span>
+                    <span style={{fontSize:11,color:done?"#639922":active?"#378ADD":"#D3D1C7"}}>
+                      {done?"Done":active?step.detail:"Queued"}
+                    </span>
+                  </div>
+                  <div style={{height:3,background:"#F1EFE8",borderRadius:99,overflow:"hidden"}}>
+                    <div style={{height:"100%",width:done?"100%":active?"55%":"0%",background:done?"#639922":"#378ADD",borderRadius:99,transition:"width 0.6s ease"}}/>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div style={{background:"rgba(255,255,255,0.05)",borderRadius:4,height:4,overflow:"hidden",marginBottom:8}}>
-            <div style={{height:"100%",background:"linear-gradient(90deg,#00FFD1,#7B61FF)",borderRadius:2,transition:"width 0.8s ease",width:`${progress}%`}}/>
-          </div>
-          <div style={{fontSize:11,color:"rgba(232,237,245,0.3)"}}>{progress}% complete</div>
         </div>
       )}
 
